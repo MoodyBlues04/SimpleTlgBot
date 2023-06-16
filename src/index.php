@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace src;
 
-use src\TelegramApi\TelegramBotApi;
+use src\Api\TelegramBotApi;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
@@ -20,4 +20,6 @@ var_dump($telegramBotApi->deleteWebhook());
 /**
  * TODO custom guzzlehhtp client with methods like getResponseAsObject($className) etc
  * TODO objects: Update, Message
+ * TODO magic methods and mb with them Methods folder
+ * TODO messagesApi (create, forward); editMessagesApi
  */
