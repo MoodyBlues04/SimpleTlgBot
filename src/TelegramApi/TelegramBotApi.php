@@ -1,21 +1,20 @@
 <?php
 
+declare(strict_types=1);
+
 namespace src\TelegramApi;
 
 use src\Response\Update;
 
 class TelegramBotApi extends BaseTelegramBotApi
 {
-    public function getUpdates(): Update
+    public function getUpdates(): array
     {
-        return new Update();
+        return $this->sendRequest('GET', 'getUpdates');
     }
 
     public function getMe(): array
     {
-        $response = $this->client->request('GET', 'getMe');
-        $responseJson = $response->getBody()->getContents();
-
-        return json_decode($responseJson, true);
+        return $this->sendRequest('GET', 'getMe');
     }
 }
