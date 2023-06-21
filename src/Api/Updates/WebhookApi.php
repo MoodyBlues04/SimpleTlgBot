@@ -9,7 +9,7 @@ trait WebhookApi
     abstract public function get(string $uri, array $query = []): array;
 
     /**
-     * @link https://core.tlgr.org/bots/api#setwebhook for options keys
+     * @see https://core.tlgr.org/bots/api#setwebhook for options keys
      */
     public function setWebhook(string $url, array $options = []): array
     {
@@ -19,7 +19,7 @@ trait WebhookApi
     }
 
     /**
-     * @link https://core.tlgr.org/bots/api#deletewebhook for options keys
+     * @see https://core.tlgr.org/bots/api#deletewebhook for options keys
      */
     public function deleteWebhook(array $options = []): array
     {
