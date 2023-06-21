@@ -15,6 +15,6 @@ class TelegramBotApi extends BaseTelegramBotApi
 
     public function getMe(): array
     {
-        return $this->get('getMe');
+        return $this->get('getMe')->getResult();
     }
 }

@@ -4,16 +4,20 @@ declare(strict_types=1);
 
 namespace src\Api\Messages;
 
+use src\Response\ClientResponse;
+
 trait MessageApi
 {
-    abstract public function get(string $uri, array $query = []): array;
+    abstract public function get(string $uri, array $query = []): ClientResponse;
 
     /**
      * @see https://core.tlgr.org/bots/api#sendmessage
      */
     public function sendMessage(array $request): array
     {
-        return $this->get('sendMessage', $request);
+        $response = $this->get('sendMessage', $request);
+        return $response->getResult();
+        // TODO return $response->isSuccess() ? ... logic
     }
 
     /**
@@ -21,7 +25,7 @@ trait MessageApi
      */
     public function forwardMessage(array $request): array
     {
-        return $this->get('forwardMessage', $request);
+        return $this->get('forwardMessage', $request)->getResult();
     }
 
     /**
@@ -29,6 +33,6 @@ trait MessageApi
      */
     public function copyMessage(array $request): array
     {
-        return $this->get('copyMessage', $request);
+        return $this->get('copyMessage', $request)->getResult();
     }
 }

@@ -4,16 +4,18 @@ declare(strict_types=1);
 
 namespace src\Api\Messages;
 
+use src\Response\ClientResponse;
+
 trait SendMediaApi
 {
-    abstract public function get(string $uri, array $query = []): array;
+    abstract public function get(string $uri, array $query = []): ClientResponse;
 
     /**
      * @see https://core.tlgr.org/bots/api#sendphoto
      */
     public function sendPhoto(array $request): array
     {
-        return $this->get('sendPhoto', $request);
+        return $this->get('sendPhoto', $request)->getResult();
     }
 
     /**
@@ -21,7 +23,7 @@ trait SendMediaApi
      */
     public function sendAudio(array $request): array
     {
-        return $this->get('sendAudio', $request);
+        return $this->get('sendAudio', $request)->getResult();
     }
 
     /**
@@ -29,7 +31,7 @@ trait SendMediaApi
      */
     public function sendDocument(array $request): array
     {
-        return $this->get('sendDocument', $request);
+        return $this->get('sendDocument', $request)->getResult();
     }
 
     /**
@@ -37,7 +39,7 @@ trait SendMediaApi
      */
     public function sendVideo(array $request): array
     {
-        return $this->get('sendVideo', $request);
+        return $this->get('sendVideo', $request)->getResult();
     }
 
     /**
@@ -45,7 +47,7 @@ trait SendMediaApi
      */
     public function sendAnimation(array $request): array
     {
-        return $this->get('sendAnimation', $request);
+        return $this->get('sendAnimation', $request)->getResult();
     }
 
     /**
@@ -53,7 +55,7 @@ trait SendMediaApi
      */
     public function sendVoice(array $request): array
     {
-        return $this->get('sendVoice', $request);
+        return $this->get('sendVoice', $request)->getResult();
     }
 
     /**
@@ -61,7 +63,7 @@ trait SendMediaApi
      */
     public function sendVideoNote(array $request): array
     {
-        return $this->get('sendVideoNote', $request);
+        return $this->get('sendVideoNote', $request)->getResult();
     }
 
     /**
@@ -69,7 +71,7 @@ trait SendMediaApi
      */
     public function sendMediaGroup(array $request): array
     {
-        return $this->get('sendMediaGroup', $request);
+        return $this->get('sendMediaGroup', $request)->getResult();
     }
 
     /**
@@ -77,7 +79,7 @@ trait SendMediaApi
      */
     public function sendLocation(array $request): array
     {
-        return $this->get('sendLocation', $request);
+        return $this->get('sendLocation', $request)->getResult();
     }
 
     /**
@@ -85,7 +87,7 @@ trait SendMediaApi
      */
     public function sendVenue(array $request): array
     {
-        return $this->get('sendVenue', $request);
+        return $this->get('sendVenue', $request)->getResult();
     }
 
     /**
@@ -93,7 +95,7 @@ trait SendMediaApi
      */
     public function sendContact(array $request): array
     {
-        return $this->get('sendContact', $request);
+        return $this->get('sendContact', $request)->getResult();
     }
 
     /**
@@ -101,7 +103,7 @@ trait SendMediaApi
      */
     public function sendPoll(array $request): array
     {
-        return $this->get('sendPoll', $request);
+        return $this->get('sendPoll', $request)->getResult();
     }
 
     /**
@@ -109,7 +111,7 @@ trait SendMediaApi
      */
     public function sendDice(array $request): array
     {
-        return $this->get('sendDice', $request);
+        return $this->get('sendDice', $request)->getResult();
     }
 
     /**
@@ -117,6 +119,6 @@ trait SendMediaApi
      */
     public function sendChatAction(array $request): array
     {
-        return $this->get('sendChatAction', $request);
+        return $this->get('sendChatAction', $request)->getResult();
     }
 }

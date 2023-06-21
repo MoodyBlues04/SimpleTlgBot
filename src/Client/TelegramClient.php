@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace src\Client;
 
 use GuzzleHttp\Client;
+use src\Response\ClientResponse;
 
 final class TelegramClient
 {
@@ -17,11 +18,12 @@ final class TelegramClient
         ]);
     }
 
-    final public function sendRequest(string $method, string $uri = '', array $options = []): array // TODO receive object
+    final public function sendRequest(string $method, string $uri = '', array $options = []): ClientResponse
     {
         $response = $this->client->request($method, $uri, $options);
         $responseJson = $response->getBody()->getContents();
 
-        return json_decode($responseJson, true);
+        $response = json_decode($responseJson, true);
+        return new ClientResponse($response);
     }
 }

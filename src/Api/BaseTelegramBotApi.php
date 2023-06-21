@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace src\Api;
 
 use src\Client\TelegramClient;
+use src\Response\ClientResponse;
 
 abstract class BaseTelegramBotApi
 {
@@ -17,12 +18,12 @@ abstract class BaseTelegramBotApi
         $this->client = new TelegramClient("{$host}/bot{$token}/");
     }
 
-    final public function get(string $uri, array $query = []): array
+    final public function get(string $uri, array $query = []): ClientResponse
     {
         return $this->client->sendRequest('GET', $uri, $this->getGuzzleGetOptions($query));
     }
 
-    final public function post(string $uri, array $body = [], array $headers = []): array
+    final public function post(string $uri, array $body = [], array $headers = []): ClientResponse
     {
         return $this->client->sendRequest('POST', $uri, $this->getGuzzlePostOptions($body, $headers));
     }
